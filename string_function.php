@@ -63,10 +63,5 @@
 
 
     $str = '<input type="text">';
-
-    // Outputs an empty string
-    //echo htmlentities($str, ENT_QUOTES, "UTF-8");
-
-    // Outputs "!!!"
     echo html_entity_decode(htmlentities(addslashes($str)));
 ?>
