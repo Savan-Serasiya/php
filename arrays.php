@@ -3,5 +3,5 @@
     print_r($food);
 
     $food[4] = 'Fruit';
-    print_r($food);
+    print_r($food);   
 ?>
