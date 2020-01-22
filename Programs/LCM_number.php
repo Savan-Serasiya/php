@@ -1,6 +1,6 @@
 <?php 
-    $number1 = 1500;
-    $number2 = 2000;
+    $number1 = 7;
+    $number2 = 99;
     $hcf = 0;
 
     for($i = 1; $i <= $number1 && $i <= $number2; $i++){
@@ -9,5 +9,5 @@
         }
     }
 
-    echo "HCF of $number1 and $number2 is: ".$hcf;
+    echo "LCM of $number1 and $number2 is ".($number1 * $number2)/$hcf;
 ?>
