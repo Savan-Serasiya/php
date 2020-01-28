@@ -168,7 +168,7 @@
                 How do you like us to get in touch with you?
                 <?php $inTouchData = ['POST', 'Email', 'SMS', 'Phone']; ?>
                 <?php foreach($inTouchData as $inTouch) : ?>
-                    <?php $selected = (@array_intersect(getValue('other','inTouch'),[$inTouch])) ? 'checked' : ''; ?>
+                    <?php $selected = (array_intersect(getValue('other','inTouch',[]),[$inTouch])) ? 'checked' : ''; ?>
                 <input type="checkbox" name="other[inTouch][]" value="<?php echo $inTouch; ?>" <?php echo $selected; ?>><?php echo $inTouch; ?>
                 <?php endforeach; ?>
             </div>
@@ -178,7 +178,7 @@
                 <select name="other[hobbies][]" multiple>
                     <?php $hobbiesData = ['Listening to Music', 'Travelling', 'Blogging', 'Sports', 'Art']; ?>
                     <?php foreach($hobbiesData as $hobbies) : ?>
-                        <?php $selected = (array_intersect(getValue('other','hobbies'), [$hobbies])) ? 'selected' : ''; ?>
+                        <?php $selected = (array_intersect(getValue('other','hobbies',[]), [$hobbies])) ? 'selected' : ''; ?>
                         <option value="<?php echo $hobbies;?>" <?php echo $selected; ?>><?php echo $hobbies; ?></option>
                     <?php endforeach; ?>
                 </select>        

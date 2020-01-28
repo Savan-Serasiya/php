@@ -1,12 +1,11 @@
 <?php 
         session_start();
-
         echo '<pre>';
         print_r($_POST);
         echo '</pre>';
 
-        function getValue($sectionName, $fieldName ){
-            return isset($_POST[$sectionName][$fieldName]) ? $_POST[$sectionName][$fieldName] : $_SESSION[$sectionName][$fieldName];
+        function getValue($sectionName, $fieldName,$returnType = ''){
+            return isset($_POST[$sectionName][$fieldName]) ? $_POST[$sectionName][$fieldName] : $returnType;
         }
 
         function setSession($sectionName){
