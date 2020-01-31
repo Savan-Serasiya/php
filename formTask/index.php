@@ -5,7 +5,13 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
+
     <?php require_once 'form_post.php'; ?>
+
+    <h2><a href="display.php">Display All</a></h2>
+    <br><br>
+
     <form action="form.php" method="POST">
         <fieldset>
             <legend>ACCOUNT INFORMATION</legend>
@@ -20,18 +26,18 @@
             </div>
 
             <div class="account-firstName">
-                <label>Firstname</label>
+                <label>FirstName</label>
                 <input type="text" name="account[firstName]" value="<?php echo getValue('account', 'firstName'); ?>">
                 <?php if(!isValidate('account', 'firstName')): ?>
-                    <label>Firstname is Required...</label>
+                    <label>FirstName is Required...</label>
                 <?php endif; ?>
             </div>
 
             <div class="account-lastName">
-                <label>Lastname</label>
+                <label>Last Name</label>
                 <input type="text" name="account[lastName]" value="<?php echo getValue('account', 'lastName'); ?>">
                 <?php if(!isValidate('account', 'lastName')): ?>
-                    <label>Lastname is Required...</label>
+                    <label>Last Name is Required...</label>
                 <?php endif; ?>
             </div>
 
@@ -42,7 +48,7 @@
                     <label>Date Of Birth is Required...</label>
                 <?php endif; ?>
             </div>
-
+                
             <div class="account-phoneNumber">
                 <label>Phone Number</label>
                 <input type="text" name="account[phoneNumber]"
@@ -186,9 +192,18 @@
 
         </fieldset>
         <div class="account-submit">
+
+        <?php
+            if(isset($_GET['Edit']) && !empty($_GET['Edit'])){
+        ?>
+            <input type="submit" name='update' value="Update" />
+            
+        <?php }else{ ?>
             <input type="submit" name='submit' value="submit" />
+        <?php } ?>
         </div>
     </form>
+    
     <script src="script.js"></script>
 </body>
 </html>
