@@ -12,7 +12,7 @@
     <h2><a href="display.php">Display All</a></h2>
     <br><br>
 
-    <form action="form.php" method="POST">
+    <form action="index.php" method="POST">
         <fieldset>
             <legend>ACCOUNT INFORMATION</legend>
             <div class="account-prefix">

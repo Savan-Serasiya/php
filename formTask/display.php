@@ -39,7 +39,7 @@
             <a href="?Delete=<?= $row['customerId']; ?>">DELETE</a>
         </td>
         <td>
-            <a href="form.php?Edit=<?= $row['customerId']; ?>">EDIT</a>
+            <a href="index.php?Edit=<?= $row['customerId']; ?>">EDIT</a>
         </td>
     </tr>
 
