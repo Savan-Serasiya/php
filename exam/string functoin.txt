@@ -1,0 +1,9 @@
+string position
+	string position function return the postion of string in given string in argument
+	
+- first argument is matching string that you want match in full string
+- second argument is full string from we match the string 
+
+$str = 'hello how are you';	
+strpos('hel',$str);
+
