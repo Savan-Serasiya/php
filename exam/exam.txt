@@ -1,0 +1,3 @@
+Array Combine
+	array combine function use to merg two arrays
+	
