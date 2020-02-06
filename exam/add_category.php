@@ -24,7 +24,7 @@
                 <label for="title">Title</label>
             </div>
             <div class="input">
-                <input type="text" name="category[title]" id="title">
+                <input type="text" name="category[title]" id="title" value="<?= getValue('title'); ?>">
             </div>
         </div>
 
@@ -33,7 +33,7 @@
                 <label for="content">Content</label>
             </div>
             <div class="input">
-                <textarea name="category[content]" id="content" cols="30" rows="10"></textarea>
+                <textarea name="category[content]" id="content" cols="30" rows="10"><?= getValue('content'); ?></textarea>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                 <label for="url">URL</label>
             </div>
             <div class="input">
-                <input type="text" name="category[url]" id="url">
+                <input type="text" name="category[url]" id="url" value="<?= getValue('url'); ?>">
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <label for="metaTitle">Meta Title</label>
             </div>
             <div class="input">
-                <input type="text" name="category[metaTitle]" id="metaTitle">
+                <input type="text" name="category[metaTitle]" id="metaTitle" value="<?= getValue('metaTitle'); ?>">
             </div>
         </div>
 
@@ -68,7 +68,8 @@
                     <?php 
                         while($row = mysqli_fetch_assoc($result)):
                     ?>
-                        <option value="<?= $row['parentCategoryId'];?>">
+                    <?php $selected = in_array(getValue('parentCategory'), [$row['parentCategoryId']]) ? 'Selected':''; ?>
+                        <option value="<?= $row['parentCategoryId'];?>" <?= $selected; ?>>
                             <?= $row['parentCategoryTitle'];?>
                         </option>
                     <?php endwhile; ?>
@@ -84,13 +85,9 @@
                 <input type="file" name="image" id="image">
             </div>
         </div>
-
         <div class="container">
             <input type="submit" value="submit" name="submit">
         </div>
-
-
-
     </form>
 </body>
 </html>

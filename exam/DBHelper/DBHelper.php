@@ -17,7 +17,6 @@
         $fieldValues = "'".implode("','",$data)."'";
         
         $sql = "INSERT INTO $tableName($fieldName) VALUES($fieldValues)";
-        echo $sql;
         $result = mysqli_query($conn, $sql);
         return mysqli_affected_rows($conn);   
     }
@@ -54,6 +53,24 @@
         $sql = "SELECT * FROM $tableName WHERE $fieldName = '$fieldValue'";
         $result = mysqli_query($conn, $sql);
         return $result;
+    }
+
+    function updateData($tableName, $data, $id, $where){
+        $conn = getConnection();
+        $sql = "UPDATE $tableName SET ";
+        foreach($data as $key => $value){  
+            $sql .= "$key = '$value', "; 
+        }
+        $sql = substr($sql, 0, -2);
+        $sql .= " ".$where;
+        $result = mysqli_query($conn, $sql);
+    }
+    
+    function checkUnique($tableName, $fieldName, $fieldValue){
+        $conn = getConnection();
+        $sql = "SELECT $fieldName from $tableName WHERE $fieldName = $fieldValue";
+        $result = mysqli_query($conn, $sql);
+        echo mysqli_num_rows($result); 
     }
     
 ?>

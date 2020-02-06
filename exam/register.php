@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
 <?php 
         require_once 'controllers/register_controller.php';
     ?>
@@ -21,7 +23,9 @@
                         $prefix = ['Mr', 'Miss', 'Dr', 'Ms'];
                         foreach($prefix as $prefixValue):
                     ?>
-                        <option value="<?= $prefixValue; ?>"><?= $prefixValue; ?></option>
+                    <?php $selected = in_array(getValue('prefix'), [$prefixValue]) ? 'selected' :'';?>
+
+                        <option value="<?= $prefixValue; ?>" <?= $selected; ?>><?= $prefixValue; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -31,7 +35,7 @@
                 <label for="firstName">FirstName</label>
             </div>
             <div class="input">
-                <input type="text" name="register[firstName]" id="firstName">
+                <input type="text" name="register[firstName]" id="firstName" value=<?= getValue('firstName'); ?>>
             </div>
         </div>
 
@@ -40,7 +44,7 @@
                 <label for="lastName">lastName</label>
             </div>
             <div class="input">
-                <input type="text" name="register[lastName]" id="lastName">
+                <input type="text" name="register[lastName]" id="lastName" value=<?= getValue('lastName'); ?>>
             </div>
         </div>
 
@@ -49,7 +53,7 @@
                 <label for="email">Email</label>
             </div>
             <div class="input">
-                <input type="text" name="register[email]" id="email">
+                <input type="text" name="register[email]" id="email" value=<?= getValue('email'); ?>>
             </div>
         </div>
 
@@ -58,7 +62,7 @@
                 <label for="mobile">Mobile Number</label>
             </div>
             <div class="input">
-                <input type="text" name="register[mobile]" id="mobile">
+                <input type="text" name="register[mobile]" id="mobile" value=<?= getValue('mobile'); ?>>
             </div>
         </div>
 
@@ -67,7 +71,7 @@
                 <label for="password">Password</label>
             </div>
             <div class="input">
-                <input type="text" name="register[password]" id="password">
+                <input type="text" name="register[password]" id="password" value=<?= getValue('password'); ?>>
             </div>
         </div>
 
@@ -85,7 +89,7 @@
                 <label for="information">Information</label>
             </div>
             <div class="input">
-                <input type="text" name="register[information]" id="information">
+                <input type="text" name="register[information]" id="information" value=<?= getValue('information'); ?>>
             </div>
         </div>
 
@@ -100,6 +104,5 @@
             <input type="submit" name="register_btn" value="submit">
         </div>
     </form>
-    
 </body>
 </html>

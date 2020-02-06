@@ -14,8 +14,6 @@
 
 <?php
     require_once './DBHelper/DBHelper.php';
-
-    
 ?>
 
 <?php
@@ -71,12 +69,11 @@
                     </td>
 
                     <td>
-                        <a href="">EDIT</a>
+                        <a href="add_category.php?edit=<?= $row['categoryId']; ?>">EDIT</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
         </table>
     </div>
-
 </body>
 </html>

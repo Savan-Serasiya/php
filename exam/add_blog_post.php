@@ -25,7 +25,7 @@
                 <label for="title">Title</label>
             </div>
             <div class="input">
-                <input type="text" name="post[title]" id="title">
+                <input type="text" name="post[title]" id="title" value="<?= getValue('title'); ?>">
             </div>
 
             <div class="container">
@@ -33,7 +33,7 @@
                     <label for="content">Content</label>
                 </div>
                 <div class="input">
-                    <textarea name="post[content]" id="content" cols="30" rows="10"></textarea>
+                    <textarea name="post[content]" id="content" cols="30" rows="10"><?= getValue('content'); ?></textarea>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                     <label for="url">URL</label>
                 </div>
                 <div class="input">
-                    <input type="text" name="post[url]" id="url">
+                    <input type="text" name="post[url]" id="url" value="<?= getValue('url'); ?>">
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <label for="publishAt">Publish At</label>
                 </div>
                 <div class="input">
-                    <input type="date" name="post[publishAt]" id="publishAt">
+                    <input type="date" name="post[publishAt]" id="publishAt" value="<?= getValue('publishAt'); ?>">
                 </div>
             </div>
             <?php 
@@ -66,7 +66,10 @@
                         <?php 
                             while($row = mysqli_fetch_assoc($result)):
                         ?>
-                            <option value="<?= $row['title'] ?>">
+                        <?php 
+                            $selected = array_intersect(getValue('category'),[$row['title']]) ? 'selected' : '';
+                        ?>
+                            <option value="<?= $row['title'] ?>" <?= $selected; ?>>
                                 <?= $row['title'] ?>
                             </option>
                         <?php endwhile; ?>
@@ -79,7 +82,7 @@
                     <label for="image">Image</label>
                 </div>
                 <div class="input">
-                    <input type="file" name="image" id="image">
+                    <input type="file" name="image" id="image" value="<?= getValue('image'); ?>">
                 </div>
             </div>
             

@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <?php 
         require_once './controllers/post_controller.php';
         require_once './DBHelper/DBHelper.php';
     ?>
-
+    
     <?php
         if(isset($_GET['delete']) && !empty($_GET['delete'])){
             deleteRow('blog_post', 'postId',$_GET['delete']);
@@ -74,7 +73,7 @@
                     </td>
 
                     <td>
-                        <a href="">EDIT</a>
+                        <a href="add_blog_post.php?edit=<?= $row['postId'];?>">EDIT</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
