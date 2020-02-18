@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Categories</title>
+</head>
+<body>
+    <nav>
+        <a href="../Categories/addEditCategory">ADD CATEGORY</a>
+    </nav>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Category Name</th>
+            <th>url key</th>
+            <th>image</th>
+            <th>status</th>
+            <th>description</th>
+            <th>Parent Category</th>
+            <th colspan="2">Action</th>
+        </tr>
+
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.categoryName }}</td>
+                <td>{{ category.urlKey }}</td>
+                <td>{{ category.image }}</td>
+                <td>{{ category.status }}</td>
+                <td>{{ category.description }}</td>
+                <td>{{ category.parentCategory }}</td>
+              
+                <td><a href="delete/{{category.categoryId}}">DELETE</a></td>
+                <td><a href="edit/{{category.categoryId}}">EDIT</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

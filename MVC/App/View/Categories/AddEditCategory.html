@@ -1,0 +1,63 @@
+
+{% if edit == 'edit' %}
+    {% set action = '../update' %}
+{% else %}
+    {% set action = 'insertCategory' %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+</head>
+<body>
+    <form action="{{action}}" method="POST">
+        <input type="hidden" value="{{category.categoryId}}" name="categoryId">
+        <div class="category-name">
+            <label for="categoryName">Category Name</label>
+            <input type="text" name="categoryName" id="categoryName" value="{{ category.categoryName }}">
+        </div>
+
+        <div class="url-key">
+            <label for="urlKey">Url Key</label>
+            <input type="text" name="urlKey" id="urlKey" value="{{ category.urlKey }}">
+        </div>
+
+        <div class="image">
+            <label for="image">Category Image</label>
+            <input type="file" name="image" id="image">
+        </div>
+
+        <div class="status">
+            <label for="status">Status</label>
+            <input type="text" name="status" id="status" value="{{ category.status }}">
+        </div>
+
+        <div class="description">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" cols="30" rows="10">{{ category.description }}</textarea>
+        </div>
+
+        <div class="parent-category">
+            <select name="parentCategory" id="parentCategory">
+                <option value="0">None</option>
+                {% for pcategory in parentCategories %}
+                    
+                    {% if pcategory.categoryId == category.parentCategory %}
+                    <option value="{{pcategory.categoryId}}" selected>{{ pcategory.categoryName }}</option>
+                    {% else %}
+                    <option value="{{pcategory.categoryId}}">{{ pcategory.categoryName }}</option>
+                    {%endif%}
+
+                    
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="submit-button">
+            <input type="submit" value="Submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

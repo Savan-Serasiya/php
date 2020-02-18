@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Products</title>
+</head>
+<body>
+    
+    <nav>
+        <a href="../Products/addEditProduct">ADD PRODUCT</a>
+    </nav>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Product Name</th>
+            <th>SKU</th>
+            <th>urlKey</th>
+            <th>image</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th colspan="2">Action</th>
+        </tr>
+
+        {% for product in products %}
+            <tr>
+                <td>{{ product.productName }}</td>
+                <td>{{ product.SKU }}</td>
+                <td>{{ product.urlKey }}</td>
+                <td><img src="{{ product.image }}" alt="" width="20" height="20"></td>
+                <td>{{ product.status }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td><a href="edit/{{ product.productId}}">EDIT</a></td>
+                <td><a href="delete/{{product.productId}}">DELETE</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
