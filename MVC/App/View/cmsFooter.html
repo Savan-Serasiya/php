@@ -1,3 +1,14 @@
 {% for links in cmsFooter %}
-    <a href="../cmspage/{{links.urlKey}}">{{links.pageTitle}}</a>
 {% endfor %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% for page in cmsFooter %}
+            <li class="nav-item">
+                <a class="nav-link" href="/cybercom/MVC/public/cms/cmspage/{{page.urlKey}}">{{page.pageTitle}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

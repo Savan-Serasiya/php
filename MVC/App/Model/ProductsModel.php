@@ -38,6 +38,8 @@ class ProductsModel extends \Core\Model{
             return $result;
         }
 
+        
+
         public static function update($query){
             $db = static::getDB();
             $result = $db -> exec($query);

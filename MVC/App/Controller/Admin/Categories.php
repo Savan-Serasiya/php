@@ -19,10 +19,23 @@
 
         public function insertCategory(){
             extract($_POST);
-            $query = "INSERT INTO categories(categoryName, urlKey, status, description, parentCategory) VALUES('$categoryName', '$urlKey', '$status', '$description', '$parentCategory')";
+            $name = $_FILES['image']['name'];
+            $tmp_name = $_FILES['image']['tmp_name'];
+            
+            $location = '../public/uploads/';
+
+            if(move_uploaded_file($tmp_name,$location.$name)){
+                echo 'Uploaded!';
+            }
+
+            $path = $location.$name;
+            echo $path;
+
+            $query = "INSERT INTO categories(categoryName, urlKey, image, status, description, parentCategory) VALUES('$categoryName', '$urlKey','$path', '$status', '$description', '$parentCategory')";
             echo $query;
+            
             $result = CategoriesModel::insert($query);
-            header('Location: index');   
+           header('Location: index');   
         }
 
         public function delete(){
@@ -42,8 +55,7 @@
             //echo $query;
 
             $category = CategoriesModel::getRow($query);
-            print_r($category);
-
+            
 
             View::renderTemplate('Categories\AddEditCategory.html', ["edit" => "edit", "category" => $category,  "parentCategories" => $result1]);
         }

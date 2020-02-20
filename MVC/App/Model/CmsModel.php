@@ -21,7 +21,7 @@
 
         public function selectHeader(){
             $db = static::getDB();
-            $query = "SELECT * FROM categories WHERE parentCategory != '0'";
+            $query = "SELECT * FROM categories";
             $stmt = $db -> query($query);
             $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
             return $result;

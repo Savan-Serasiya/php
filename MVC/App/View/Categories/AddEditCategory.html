@@ -1,63 +1,72 @@
-
+{% extends "adminHeader.html" %}
+{% block body %}
 {% if edit == 'edit' %}
     {% set action = '../update' %}
 {% else %}
     {% set action = 'insertCategory' %}
 {% endif %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
-</head>
-<body>
-    <form action="{{action}}" method="POST">
+
+<div class="container mt-5">
+    <form action="{{action}}" method="POST" enctype="multipart/form-data" class="form">
+        
         <input type="hidden" value="{{category.categoryId}}" name="categoryId">
-        <div class="category-name">
-            <label for="categoryName">Category Name</label>
-            <input type="text" name="categoryName" id="categoryName" value="{{ category.categoryName }}">
+        <div class="category-name form-group row">
+            <label for="categoryName" class="col-md-2">Category Name</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="categoryName" id="categoryName" value="{{ category.categoryName }}">
+            </div>
         </div>
 
-        <div class="url-key">
-            <label for="urlKey">Url Key</label>
-            <input type="text" name="urlKey" id="urlKey" value="{{ category.urlKey }}">
+        <div class="url-key form-group row">
+            <label for="urlKey" class="col-md-2">Url Key</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="urlKey" id="urlKey" value="{{ category.urlKey }}">
+            </div>
         </div>
 
-        <div class="image">
-            <label for="image">Category Image</label>
-            <input type="file" name="image" id="image">
+        <div class="image form-group row">
+            <label for="image" class="col-md-2">Category Image</label>
+            <div class="col-md-10">
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
         </div>
 
-        <div class="status">
-            <label for="status">Status</label>
-            <input type="text" name="status" id="status" value="{{ category.status }}">
+        <div class="status form-group row">
+            <label for="status" class="col-md-2">Status</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="status" id="status" value="{{ category.status }}">
+            </div>
         </div>
 
-        <div class="description">
-            <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10">{{ category.description }}</textarea>
+        <div class="description form-group row">
+            <label for="description" class="col-md-2">Description</label>
+            <div class="col-md-10">
+                <textarea name="description" id="description" class="form-control" cols="30" rows="5">{{ category.description }}</textarea>
+            </div>
         </div>
 
-        <div class="parent-category">
-            <select name="parentCategory" id="parentCategory">
-                <option value="0">None</option>
-                {% for pcategory in parentCategories %}
-                    
-                    {% if pcategory.categoryId == category.parentCategory %}
-                    <option value="{{pcategory.categoryId}}" selected>{{ pcategory.categoryName }}</option>
-                    {% else %}
-                    <option value="{{pcategory.categoryId}}">{{ pcategory.categoryName }}</option>
-                    {%endif%}
-
-                    
-                {% endfor %}
-            </select>
+        <div class="parent-category form-group row">
+            <label for="parentCategory" class="col-md-2">Parent Category</label>
+            <div class="col-md-10">
+                <select name="parentCategory" class="form-control" id="parentCategory">
+                    <option value="0">None</option>
+                    {% for pcategory in parentCategories %}
+                        
+                        {% if pcategory.categoryId == category.parentCategory %}
+                        <option value="{{pcategory.categoryId}}" selected>{{ pcategory.categoryName }}</option>
+                        {% else %}
+                        <option value="{{pcategory.categoryId}}">{{ pcategory.categoryName }}</option>
+                        {%endif%}
+    
+                    {% endfor %}
+                </select>
+            </div>
+            
         </div>
 
-        <div class="submit-button">
-            <input type="submit" value="Submit" value="Submit">
+        <div class="submit-button text-center">
+            <input type="submit" class="btn btn-primary" value="Submit" value="Submit">
         </div>
     </form>
-</body>
-</html>
+    </div>
+{% endblock %}

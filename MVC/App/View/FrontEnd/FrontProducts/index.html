@@ -1,0 +1,15 @@
+<div class="card" style="width: 25rem; margin: 20px; display: inline-block;">
+    <img class="card-img-top" src="../../{{product.image}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{product.productName}}</h5>
+        <p class="card-text"><b>&#8377;: {{product.price}}</b></p>
+        <button id="btnAddToCart" class="btn btn-primary">Add to Cart</a>
+    </div>
+</div>
+
+<script>
+$("#btnAddToCart").click(function(){
+    alert('{{product.productId}}');
+});
+
+</script>

@@ -1,18 +1,18 @@
-<table border="1" cellpadding="10">
-<tr>
-    <th>
-        ProductName
-    </th>
-    <th>
-        Price
-    </th>
-</tr>
+{% extends "cmsHeader.html" %}
+{% block body %}
+<div class="container-fluid mt-2 mb-2">
+
     {% for product in products %}
-
-        <tr>
-            <td>{{product.productName}}</td>
-            <td>{{product.price}}</td>
-        </tr>
-
+    <a href="/cybercom/MVC/Public/Product/view/{{product.urlKey}}">
+        <div class="card" style="width: 15rem; margin: 20px; display: inline-block;">
+            <img class="card-img-top" src="../../{{product.image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{product.productName}}</h5>
+                <p class="card-text"><b>&#8377;: {{product.price}}</b></p>
+                <a href="#" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </a>
     {% endfor %}
-</table>
+</div>
+{% endblock %}

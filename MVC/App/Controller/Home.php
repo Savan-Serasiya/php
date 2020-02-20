@@ -6,7 +6,12 @@
         public function index()
         {
             $categories = CmsModel::selectHeader();
-            View::renderTemplate('Home/index.html', ['header' => $categories]);
+            View::renderTemplate('cmsHeader.html',  ['cmsHeader' => $categories]);
+            $home = CmsModel::selectPage('homepage');
+            View::renderTemplate('Home/index.html', ['homepage' => $home]);
+            $footer = CmsModel::selectFooter();
+            
+            View::renderTemplate('cmsFooter.html', ['cmsFooter' => $footer]);
         }
     }
 ?>

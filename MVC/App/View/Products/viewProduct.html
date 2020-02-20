@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Products</title>
-</head>
-<body>
-    
-    <nav>
-        <a href="../Products/addEditProduct">ADD PRODUCT</a>
+{% extends "adminHeader.html" %}    
+{% block body %}
+<nav class="navbar">
+        <a class="nav-link" href="../Products/addEditProduct">ADD PRODUCT</a>
     </nav>
 
-    <table border="1" cellpadding="10">
+    <table cellpadding="10" class="table table-bordered text-center">
         <tr>
             <th>Product Name</th>
             <th>SKU</th>
@@ -26,14 +21,14 @@
                 <td>{{ product.productName }}</td>
                 <td>{{ product.SKU }}</td>
                 <td>{{ product.urlKey }}</td>
-                <td><img src="{{ product.image }}" alt="" width="20" height="20"></td>
+                <td><img src="../../{{  product.image }}" alt="" width="70" height="70"></td>
                 <td>{{ product.status }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
-                <td><a href="edit/{{ product.productId}}">EDIT</a></td>
-                <td><a href="delete/{{product.productId}}">DELETE</a></td>
+                <td><a class="btn btn-danger" href="delete/{{product.productId}}">DELETE</a></td>
+                <td><a class="btn btn-warning" href="edit/{{ product.productId}}">EDIT</a></td>
+
             </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

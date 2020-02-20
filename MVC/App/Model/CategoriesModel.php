@@ -27,6 +27,7 @@ class CategoriesModel extends \Core\Model{
         }
 
         public static function delete($query){
+            echo $query;
             $db = static::getDB();
             $result = $db -> exec($query);
             return $result;

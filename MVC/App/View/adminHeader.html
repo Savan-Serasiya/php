@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        label{
+            text-align: center;
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav>
-        <a href="Products/index">MANAGE PRODUCTS</a>
-        <a href="Categories/index">MANAGE CATEGORIES</a>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/cybercom/MVC/Public/admin/dashboard">DASHBOARD</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/cybercom/MVC/Public/admin/Products/index">MANAGE PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cybercom/MVC/Public/admin/Categories/index">MANAGE CATEGORIES</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
     {% block body %}
     {% endblock %}
+
 </body>
 </html>

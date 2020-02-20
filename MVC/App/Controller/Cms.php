@@ -8,7 +8,6 @@
 
                 $q = $_SERVER['QUERY_STRING'];
                 $url = substr($q, strripos($q, "/")+1);
-                echo "<b>$url</b>";
 
                 if($url == "cmspage"){
                     $url = "homepage";

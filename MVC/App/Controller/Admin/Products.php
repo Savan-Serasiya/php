@@ -20,9 +20,23 @@
 
         public function insertProduct(){
            
+           
             extract($_POST);
+            $name = $_FILES['image']['name'];
+            $tmp_name = $_FILES['image']['tmp_name'];
+            
+            $location = '../public/uploads/';
+
+            if(move_uploaded_file($tmp_name,$location.$name)){
+                echo 'Uploaded!';
+            }
+
+            $path = $location.$name;
+            echo $path;
+           
             print_r($categories);
-            $query = "INSERT INTO products(productName, SKU, urlKey, status, description, shortDescription, price, stock) VALUES('$productName', '$sku', '$urlKey', '$status', '$description', '$shortDescription', '$price', '$stock')";
+            $query = "INSERT INTO products(productName, SKU, urlKey, image, status, description, shortDescription, price, stock) VALUES('$productName', '$sku', '$urlKey', '$path', '$status', '$description', '$shortDescription', '$price', '$stock')";
+            echo "<br>".$query;
             $productId = ProductsModel::insert($query);
             TransitionModel::insert($productId, $categories);
             
@@ -48,7 +62,7 @@
 
         public function updateAction(){
            
-            extract($_POST);
+           extract($_POST);
            echo $productId;
            $query =  "UPDATE products SET productName = '$productName', SKU = '$sku', urlKey = '$urlKey', status = '$status', description = '$description', shortDescription = '$shortDescription', price = '$price', stock = '$stock' WHERE productId = '$productId'";
            echo $query;
