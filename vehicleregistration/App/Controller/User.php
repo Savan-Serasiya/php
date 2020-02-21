@@ -94,9 +94,9 @@
                 $_SESSION['error'] = "Invalid Email or Password";
                 header('Location: login');
             }
-            
         }
 
+        
         public function DoRegistration(){
             extract($_POST);
             $query = "INSERT INTO users(

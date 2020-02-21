@@ -14,6 +14,7 @@
     <table border="1" cellpadding="10">
         <tr>
             <th>Title</th>
+            <th>User Id</th>
             <th>Vehicle Number</th>
             <th>Licence Number</th>
             <th>Service Date</th>
@@ -27,6 +28,7 @@
         {% for service in serviceData %}
         <tr>
             <td>{{service.title}}</td>
+            <td>{{service.userId}}</td>
             <td>{{service.vehicleNumber}}</td>
             <td>{{service.licenceNumber}}</td>
             <td>{{service.date}}</td>
