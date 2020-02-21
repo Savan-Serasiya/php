@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% set baseUrl = '/cybercom/php/vehicleregistration/Public/Admin/' %}
+    <h1>Admin</h1>
+    <span style="color: red;">{{actionMessage}}</span>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Title</th>
+            <th>Vehicle Number</th>
+            <th>Licence Number</th>
+            <th>Service Date</th>
+            <th>Time Slot</th>
+            <th>Vehicle Issue</th>
+            <th>Service Center</th>
+            <th>Status</th>
+            <th colspan="2">Action</th>
+        </tr>
+
+        {% for service in serviceData %}
+        <tr>
+            <td>{{service.title}}</td>
+            <td>{{service.vehicleNumber}}</td>
+            <td>{{service.licenceNumber}}</td>
+            <td>{{service.date}}</td>
+            <td>{{service.timeSlot}}</td>
+            <td>{{service.vehicleIssue}}</td>
+            <td>{{service.serviceCenter}}</td>
+            <td>{{service.status}}</td>
+            <td><a href="{{baseUrl}}deleteService/{{service.serviceId}}">DELETE</a></td>
+            <td><a href="{{baseUrl}}editService/{{service.serviceId}}">EDIT</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

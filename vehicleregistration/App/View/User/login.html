@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    {% set baseUrl = '/cybercom/php/vehicleregistration/Public/User/' %}
+    <h3>Login</h3>
+    <span style="color: red;">{{error}}</span>
+    <form action="{{baseUrl}}DoLogin" method="POST">
+        <div class="username">
+            <label for="email">User name</label>
+            <input type="text" name="email" id="email">
+        </div>
+
+        <div class="password">
+            <label for="password">password</label>
+            <input type="text" name="password" id="password">
+        </div>
+
+        <div class="submit">
+            <input type="submit" value="Login">
+        </div>
+
+        <div class="registration">
+            <a href="{{baseUrl}}registration">registration</a>
+        </div>
+    </form>
+</body>
+</html>

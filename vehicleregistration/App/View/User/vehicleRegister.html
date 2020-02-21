@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration</title>
+
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vehicle Service Registration</h1>
+
+    <span style="color: red; margin: 50px;">{{error}}</span>
+
+    <form action="DoVehicleRegistration" method="POST">
+
+        <div class="title">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+        </div>
+
+        <div class="vehicleNumber">
+            <label for="vehicleNumber">Vehicle Number</label>
+            <input type="text" name="vehicleNumber" id="vehicleNumber">
+        </div>
+
+        <div class="licenceNumber">
+            <label for="licenceNumber">Licence Number</label>
+            <input type="text" name="licenseNumber" id="licenseNumber">
+        </div>
+
+        <div class="date">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date">
+        </div>
+
+        <div class="timeSlot">
+            {% set slots= ['9-10', '10-11', '11-12', '12-1', '1-2', '2-3', '3-4', '4-5', '5-6'] %}
+            <label for="tileSlot">Time Slot</label>
+            <select name="timeSlot" id="timeSlot">
+                {% for slot in slots %}
+                <option value="{{slot}}">{{slot}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="vehicleIssue">
+            <label for="vehicleIssue">Vehicle Issue</label>
+            <input type="text" name="vehicleIssue" id="vehicleIssue">
+        </div>
+
+        <div class="serviceCenter">
+            {% set centers= ['Center 1', 'Center 2', 'Center 3'] %}
+            <label for="serviceCenter">Service Center</label>
+            <select name="serviceCenter" id="serviceCenter">
+                {% for center in centers %}
+                <option value="{{center}}">{{center}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="submit">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+
+<script>
+
+    var today = new Date();
+    var dd = today.getDate() + 1;
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById('date').min = today;
+
+</script>
+
+</html>
